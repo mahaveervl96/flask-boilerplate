@@ -5,6 +5,7 @@ from .config import get_config
 from .extensions import db, migrate
 
 from .web import web_bp
+from .api import register_api_blueprints
 
 
 def create_app():
@@ -17,5 +18,6 @@ def create_app():
     migrate.init_app(app, db)
 
     app.register_blueprint(web_bp)
+    register_api_blueprints(app)
 
     return app
